@@ -58,8 +58,11 @@ function getCicleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  if (value1 === value2) {
+    return value1;
+  }
+  return (value1 + value2) / 2;
 }
 
 /**
@@ -93,8 +96,8 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  return (-b) / a;
 }
 
 
@@ -116,8 +119,10 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const length1 = Math.sqrt((x1 ** 2) + (y1 ** 2));
+  const length2 = Math.sqrt((x2 ** 2) + (y2 ** 2));
+  return Math.acos((x1 * x2) + (y1 * y2)) / (length1 * length2);
 }
 
 /**
@@ -188,7 +193,7 @@ function getParallelipidedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  return Math.round(num / 10 ** pow) * (10 ** pow);
+  return Math.round(num / (10 ** pow)) * (10 ** pow);
 }
 
 /**
@@ -208,9 +213,10 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(n) {
-  for (let i = 2; i < Math.floor(n / 2 + 1); i += 1) {
-    if (n % i === 0) return false;
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (i = 2; i < Math.floor(num / 2 + 1); i++) {
+    if (num % i === 0) return false;
   }
   return true;
 }
